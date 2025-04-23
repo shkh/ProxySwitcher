@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ProxySwitcher</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../scripts/popup.js"></script>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="proxy-list" id="proxyList">
+      <!-- Proxy list will be displayed here -->
+    </div>
+
+    <div class="controls">
+      <button id="addProxyBtn" class="add-btn">Add New Proxy</button>
+    </div>
+
+    <div id="formContainer" class="hidden">
+      <form id="proxyForm">
+        <input type="hidden" id="proxyId">
+
+        <div class="flex-container title-container">
+          <p id="formTitle">Settings of</p>
+          <p type="button" id="proxyTitle" class="title"></p>
+        </div>
+
+        <div class="form-group">
+          <label for="proxyName">Name</label>
+          <div class="flex-container">
+            <input type="text" id="proxyName" class="text-input" required>
+            <input type="color" id="proxyColor" class="color-input" value="#ffffff">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="proxyType">Type</label>
+          <select id="proxyType">
+            <option value="http">HTTP</option>
+            <option value="https">HTTPS</option>
+            <option value="socks4">SOCKS4</option>
+            <option value="socks5">SOCKS5</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="proxyHost">Host</label>
+          <input type="text" id="proxyHost" class="text-input" required>
+        </div>
+
+        <div class="form-group">
+          <label for="proxyPort">Port</label>
+          <input type="number" id="proxyPort" class="text-input" required>
+        </div>
+
+        <div class="form-group">
+          <label for="bypassList">Bypass List (optional)</label>
+          <textarea id="bypassList" placeholder="e.g., *.example.com, localhost, 192.168.*.*"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="save-btn">Save</button>
+          <button type="button" id="cancelBtn" class="cancel-btn">Cancel</button>
+          <button type="button" id="deleteBtn" class="delete-btn hidden">Delete</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>
