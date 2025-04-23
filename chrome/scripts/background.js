@@ -36,7 +36,6 @@ function backwardCompatibility() {
         proxy.color = `#${rgb.map(x => ('0' + parseInt(x).toString(16)).slice(-2)).join('')}`;
       }
     });
-    console.log(proxies);
     chrome.storage.local.set({ proxies: proxies });
   });
 }
