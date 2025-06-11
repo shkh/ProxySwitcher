@@ -1,20 +1,21 @@
 export const setExtensionIcon = () => {
     chrome.storage.local.get(['proxies', 'activeProxyId'], (result) => {
+        const radius = 32;
         const proxies = result.proxies || [];
         const activeProxy = proxies.find(p => p.id === result.activeProxyId);
         const activeProxyColor = activeProxy ? activeProxy.color : DIRECT_CONN.color;
-        const canvas = new OffscreenCanvas(16, 16);
+        const canvas = new OffscreenCanvas(radius, radius);
         const ctx = canvas.getContext('2d');
         ctx.fillStyle = activeProxyColor;
         ctx.beginPath();
-        ctx.arc(8, 8, 8, 0, Math.PI * 2);
+        ctx.arc(radius/2, radius/2, radius/2, 0, Math.PI * 2);
         ctx.fill();
         ctx.fillStyle = 'white';
-        ctx.font = 'italic bold 12px Arial';
+        ctx.font = 'italic bold 24px Arial';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('P', 8, 9);
-        const imageData = ctx.getImageData(0, 0, 16, 16);
+        ctx.fillText('P', radius/2-1, radius/2+1);
+        const imageData = ctx.getImageData(0, 0, radius, radius);
         chrome.action.setIcon({ imageData: imageData });
     });
 }
