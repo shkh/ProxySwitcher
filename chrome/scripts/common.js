@@ -11,10 +11,10 @@ export const setExtensionIcon = () => {
         ctx.arc(radius/2, radius/2, radius/2, 0, Math.PI * 2);
         ctx.fill();
         ctx.fillStyle = 'white';
-        ctx.font = 'italic bold 24px Arial';
+        ctx.font = 'italic bold ' + (radius - 2) + 'px Arial';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText('P', radius/2-1, radius/2+1);
+        ctx.fillText('p', radius/2, radius/2);
         const imageData = ctx.getImageData(0, 0, radius, radius);
         chrome.action.setIcon({ imageData: imageData });
     });
